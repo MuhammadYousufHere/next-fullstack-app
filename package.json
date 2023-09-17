@@ -3,12 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:dev": "npx prisma migrate dev --preview-feature",
+    "migrate:dev:create": "npx prisma migrate dev --create-only --preview-feature",
+    "migrate:reset": "npx prisma migrate dev --preview-feature",
+    "prsma:gen": "npx prisma generate",
+    "prisma:gen:watch": "npx prisma generate --watch",
+    "docker:db": "docker-compose -f docker-compose.db.yml up -d",
+    "docker:stop": "docker-compose stop",
+    "docker:down": "docker-compose down"
   },
   "dependencies": {
+    "@prisma/client": "^5.3.1",
     "@types/node": "20.6.2",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
@@ -21,5 +30,9 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "prisma": "^5.3.1"
   }
 }
